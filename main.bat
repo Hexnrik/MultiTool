@@ -1,5 +1,4 @@
 @echo off
-
 :menu
 title Client - Menu
 cls
@@ -18,7 +17,7 @@ echo Willkommen %USERNAME% im Hexnrik Dashboard / Menu endscheide dich von Folge
 echo.
 echo        [A] Ping Domain / IP                                 [B] See your IP
 echo.
-echo        [C] (%=§(%(&=$§("?(&                                 [D] Destroy your PC
+echo        [C] Zeigt dir alle CMD Farben                        [D] Show your Tasklist
 echo.
 echo        [F] Time / Change                                    [G] Shutdown your PC
 echo.
@@ -26,12 +25,12 @@ echo        [H] Link to Hexnrik                                  [Z] Exit
 echo _____________________________________________________________________________________
 :actions
 set /p menu= Schreibe den Buchstaben deiner Wahl:
-if %menu% == A goto deaktiviert
+if %menu% == A goto ping
 if %menu% == B goto ip
-if %menu% == C goto deaktiviert
-if %menu% == D goto deaktiviert
+if %menu% == C goto color
+if %menu% == D goto show
 if %menu% == F goto deaktiviert
-if %menu% == G goto deaktiviert
+if %menu% == G goto shutdown
 if %menu% == H goto link
 if %menu% == Z exit
 color c
@@ -46,6 +45,26 @@ echo Zurück zum Menu? Einfach einmal Enter oder eine andere Beliebige Taste Dr�
 pause
 goto menu
 
+:ping
+start pinger.bat
+exit
+
+:color
+start colors.bat
+cls 
+exit
+
+:show
+cls
+color C
+Tasklist
+pause
+cls
+goto menu
+
+:shutdown
+start shutdown.bat
+
 :link
 start https://GitHub.com/Hexnrik
 cls
@@ -53,7 +72,7 @@ goto menu
 
 :deaktiviert
 cls
-color a
+color c
 echo -----------------------------------
 echo -                                 -
 echo -          Client Error           -
